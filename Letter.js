@@ -1,18 +1,28 @@
-function Letter (letter, hasBeenGuessed) {
+function Letter (letter) {
     this.letter = letter;
     this.hasBeenGuessed = false;
 
-    this.displayUnderscoreOrLetter() = function () {
+    this.displayUnderscoreOrLetter = function () {
         if (this.hasBeenGuessed === true) {
             return this.letter;
         } else {
-            return "_";
+            if(this.letter === " ") {
+                return " "
+            } else {
+                return "_";
+            }
         }
     }
 
-    this.checkIfGuessedLetterIsAMatch() = function (guessedLetter) {
-        if (guessedLetter.toLowerCase() === this.letter) {
+    this.doesUserGuessMatch = function (guessedLetter) {
+        if (guessedLetter.toLowerCase() === this.letter.toLowerCase()) {
             this.hasBeenGuessed = true;
-        }
+        } 
     }
 }
+
+var test = new Letter ("a")
+test.doesUserGuessMatch("a")
+
+module.exports = Letter;
+
